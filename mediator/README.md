@@ -4,7 +4,7 @@ Ce dépôt contient les instructions nécessaires pour déployer un agent média
 
 | Gabarit  | Descripton |
 | -------- | ---------- |
-| [mediator.yml](https://github.com/CQEN-QDCE/exp-outils-gestion/blob/main/taiga/openshift/templates/taiga.yaml) | Installation de développement. |
+| [mediator.yml](https://github.com/CQEN-QDCE/exp-aries-odca/blob/main/mediator/mediator.yml) | Installation de développement. |
 
 ## Paramètres du gabarit
 
