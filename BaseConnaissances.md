@@ -1,6 +1,23 @@
-
-
-
+# Comment utiliser la librairie Overlay Capture Architecture (OCA)
+Importer les librairies OCA dans le package.json du projet
+```json
+...
+  "oca.js-form-core": "^0.0.16",
+  "oca.js-form-html": "^0.0.6"
+...
+```
+```typescript
+import type { OCA, 
+              CaptureBase, 
+              EntryOverlay, 
+              MetaOverlay, 
+              EntryCodeOverlay, 
+              LabelOverlay, 
+              FormLayoutOverlay, 
+              InformationOverlay, 
+              CredentialLayoutOverlay, 
+              FormatOverlay } from 'oca.js'
+```
 ```typescript
   const captureBase: CaptureBase = {
     attributes: {"dateOfBirth":"Date","fullName":"Text"},
@@ -31,6 +48,6 @@
 
   const oca: OCA = {
     capture_base: captureBase,
-    overlays: []
+    overlays: [frLabelOverlay, enLabelOverlay]
   };
 ```
