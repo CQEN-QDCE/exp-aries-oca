@@ -1,3 +1,10 @@
+# Qu'est-ce que l'attribut "classification" représente?
+  const captureBase: CaptureBase = {
+    attributes: {"dateOfBirth":"Date","dateOfExpiry":"Date","dateOfIssue":"Date","fullName":"Text",},
+    classification: "GICS:45102010",
+    pii: ["dateOfBirth","fullName"],
+    type: "spec/capture_base/1.0"
+  };
 
 JSON-LD Credentials in ACA-Py
 By design Hyperledger Aries is credential format agnostic. This means you can use it for any credential format, as long as an RFC is defined for the specific credential format. ACA-Py currently supports two types of credentials, Indy and JSON-LD credentials. This document describes how to use the latter by making use of W3C Verifiable Credentials using Linked Data Proofs.
