@@ -1,3 +1,25 @@
+### Réponses de Robert Mitwicki à nos questions
+On the other hand, in your answer, you mention "attrNames": ["ocaSchemaSAI",...]. Does this mean that the attributes in anoncred don't really have displayable names in a wallet that doesn't support the OCA standard?
+
+Correct. If you would like to have compatible with just AnnoCreds you need to duplicated the attributes names here as well.
+ 
+Why did you make this choice? Can you give me more explanations? 
+
+The reason for it, was that AnnoCreds does not support most of important features necessary for real case credential (portability, support for nested objects, chaining mechanism and more). We showed how it can be done from AnnoCreds towards proper solution to allow people who already started working with indy technology to have step forward. 
+
+ 
+I just wanted to get your opinion on if this is an okay solution to enhance the anoncred with an extra attribute to add an OCA Bundle.
+
+Yes, this is how we show case the Digital Immunization Passport almost 2 years ago, by extending anoncred with OCA bundle to link it to end-verifiable structure which does not stay on the ledger (present interoperability of the VC). 
+
+Btw. soon more example would be available here:
+
+https://the-human-colossus-foundation.github.io/oca-spec/
+
+Hope that helps and all is going well with your project.
+best regards
+Robert
+
 ### Qu'est-ce que l'attribut "classification" représente?
   const captureBase: CaptureBase = {
     attributes: {"dateOfBirth":"Date","dateOfExpiry":"Date","dateOfIssue":"Date","fullName":"Text",},
