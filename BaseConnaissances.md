@@ -51,3 +51,5 @@ import type { OCA,
     overlays: [frLabelOverlay, enLabelOverlay]
   };
 ```
+Modèle pour inclure une page HTML dans le WebView d'une app React Native.
+https://github.com/DaniAkash/react-native-draftjs/blob/bc51410117d238e0f67f90e614fe11aacf41843b/index.js#L113
