@@ -53,3 +53,6 @@ import type { OCA,
 ```
 Modèle pour inclure une page HTML dans le WebView d'une app React Native.
 https://github.com/DaniAkash/react-native-draftjs/blob/bc51410117d238e0f67f90e614fe11aacf41843b/index.js#L113
+
+4 choses à connaître avant d'utiliser le webview
+https://javascript.plainenglish.io/4-problems-that-you-need-to-know-before-using-react-native-webview-d1d6ef803347
