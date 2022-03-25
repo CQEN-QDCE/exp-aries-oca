@@ -1,6 +1,11 @@
-
-
-
+...
+  const credentalLayout: CredentialLayoutOverlay = {
+    capture_base: '',
+    type: '',
+    layout: ''
+  }
+...
+...
 config:
   width: 555px
   height: 706px
@@ -435,4 +440,4 @@ pages:
                       style: \"display: inline-block; font-weight: 600; font-size: 12px; color: black;\"
           - type: col
             size: 1
-
+...
