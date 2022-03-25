@@ -1,11 +1,13 @@
-...
+Pour créer un layout pour afficher une attestation par code:
+```
   const credentalLayout: CredentialLayoutOverlay = {
     capture_base: '',
     type: '',
     layout: ''
   }
-...
-...
+```
+L'attribut layout contient les instructions d'affichage:
+```
 config:
   width: 555px
   height: 706px
@@ -440,4 +442,4 @@ pages:
                       style: \"display: inline-block; font-weight: 600; font-size: 12px; color: black;\"
           - type: col
             size: 1
-...
+```
