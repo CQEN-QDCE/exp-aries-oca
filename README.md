@@ -18,8 +18,8 @@ Le besoin intiale qui a mené à cette expérimentaion était de pouvoir affiche
 
 * [npm](https://www.npmjs.com)
 * [CANdy-Dev-Network](https://candy-dev.cloudcompass.ca/)
-* Un téléphone ([iPhone](https://www.apple.com/ca/iphone)ou Android) ou [Android Studio](https://developer.android.com/studio)
-* 
+* Un téléphone ([iPhone](https://www.apple.com/ca/iphone) ou Android) ou [Android Studio](https://developer.android.com/studio)
+
 ### Facultatifs
 
 * [VSCode](https://code.visualstudio.com)
