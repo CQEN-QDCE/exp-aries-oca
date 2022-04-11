@@ -25,7 +25,7 @@ Le besoin intiale qui a mené à cette expérimentaion était de pouvoir affiche
 * [VSCode](https://code.visualstudio.com)
 
 ### Installation
-Suivre les instructions d'installation de la version [CQEN-QDCE](https://github.com/CQEN-QDCE) du porte-feuille [ARIES Mobile Agent React Native](https://github.com/CQEN-QDCE/aries-mobile-agent-react-native). Utiliser la branche "[poc-oca](https://github.com/CQEN-QDCE/aries-mobile-agent-react-native/tree/poc-oca)" pour récupérer le code de l'expérimentation.
+Suivre les instructions d'installation de la version [CQEN-QDCE](https://github.com/CQEN-QDCE) du porte-feuille "ARIES Mobile Agent React Native". Utiliser la branche "[poc-oca](https://github.com/CQEN-QDCE/aries-mobile-agent-react-native/tree/poc-oca)" pour récupérer le code de l'expérimentation.
 
 
 ### 3.1 Conditions initiales et prémisses
