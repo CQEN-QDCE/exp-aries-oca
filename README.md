@@ -29,3 +29,28 @@ Suivre les instructions d'installation de la version [CQEN-QDCE](https://github.
 
 
 ### 3.1 Conditions initiales et prémisses
+
+## 4.0 ???
+
+Pour cette expérimentation, il a été décidé de minimiser les modidifications à l'attestation pour lui associer un schéma OCA. Deux options semblaient possibles: 1-Ajouter une référence (SAI) vers le schéma OCA dans un attribut de l'attestation 2-Utiliser l'identifiant unique de la définition de l'attestation (Credential Definition) pour le récupérer. La deuxième option a été choisi. Elle a l'avantage de ne pas modifier l'attestation. Par contre, une référence (SAI) permettrait de créer un lien fort entre l'attestation et son schéma OCA. La référence pourrait également être le hash du schéma OCA. Il serait ainsi impossible de le modifier. 
+
+Le schéma de l'attestation utilisé pour l'expérimentation est:
+```json
+{
+  "schema_name": "QCPERSON",
+  "schema_version": "1.0",
+  "attributes": [
+    "first_name",
+    "last_name",
+    "birth_date",
+    "street_address",
+    "city",
+    "province",
+    "country",
+    "postal_code",
+    "issued"
+  ]
+}
+```
+Il est disponible sur le registre de preuve [CANdy-Dev-Network](https://candy-dev.cloudcompass.ca/). Son identifiant est Ep31SvFAetugFPe5CGzJxt:2:QCPERSON:1.0. La définition d'attestation utilisée est Ep31SvFAetugFPe5CGzJxt:3:CL:25458:QCPERSON2.
+
