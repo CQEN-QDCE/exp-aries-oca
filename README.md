@@ -1,6 +1,32 @@
 # Intégrer le standard Overlay Capture Architecture (OCA) à l'écosystème ARIES
 Voici les travaux réalisés dans le cadre d'une expérimentation visant à intégrer le standard [Overlay Capture Architecture (OCA)](https://oca.colossi.network/) à l'écosystème [ARIES](https://www.hyperledger.org/use/aries) tel que proposé dans la requête pour commentaires [ARIES RFC 0013: Overlays](https://github.com/hyperledger/aries-rfcs/blob/main/concepts/0013-overlays/README.md).
 
+Qu'est-ce qu'OCA
+Overlay Capture Architecture (OCA) est une architecture de capture de données par superposition. Elle représente un schéma comme un objet multidimensionnel composé d'une base de capture stable et de superpositions liées qui viennent enrichir la base de capture.
+
+### Superposition de méta-informations
+Une superposition de méta-informations peut être utilisé pour ajouter des informations contextuelles sur le schéma de base, notamment son nom , sa description, etc.
+
+### Superposition d'encodage des caractères
+Une superposition d'encodage des caractères peut être utilisé pour définir l'encodage du jeu de caractères (par exemple UTF-8, ISO-8859-1, Windows-1251, Base58Check, etc.). Elle peut être utile pour mettre en œuvre des solutions qui facilitent la saisie de données dans plusieurs langues.
+
+### Superposition de format
+Une superposition de format peut être utilisé pour ajouter des formats, des longueurs de champ ou des schémas de codage de dictionnaire aux attributs du schéma.
+
+### Superposition de saisie
+Une superposition de saisie peut être utilisé pour ajouter des valeurs de champ prédéfinies dans une langue spécifiée aux attributs du schéma. Pour minimiser le risque de capture de données PII imprévues, il est préférable d'éviter la mise en œuvre de champs de texte libre. Ce type de superposition permet de saisir des données structurées, ce qui élimine le risque de capturer et de stocker ultérieurement des données dangereuses.
+
+### Superposition de libellé
+Une superposition de libellé peut être utilisé pour ajouter des étiquettes dans une langue spécifique aux attributs et catégories du schéma. Ce type de superposition permet d'afficher les étiquettes dans une langue spécifique au niveau de la couche de présentation pour une meilleure compréhension par l'utilisateur final.
+
+### Superposition d'information
+Une superposition d'information peut être utilisé pour ajouter une prose pédagogique, informative ou juridique afin de faciliter le processus de saisie des données.
+
+### Superposition d'attribut sensible
+
+### Superposition de mise en page
+Une superposition de mise en page peut être utilisé pour afficher les données capturées par le schéma sous une forme libre (positionnement des libellés, des champs, image de fond, etc.). La définition de la mise en page est un mixte de YAML incluant du CSS (format propriétaire).
+
 ## 1.0 Objectifs
 - Comprendre le standard Overlay Capture Architecture (OCA) et ses applications possibles;
 - Définir un schéma Overlay Capture Architecture (OCA) permettant la personalisation d'une attestation Indy (traduction, format de données, etc.);
