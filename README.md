@@ -85,3 +85,45 @@ Création de schéma OCA
 Un [éditeur de schéma OCA](https://github.com/THCLab/oca-editor) est disponible sur le GitHub de [The Humain Colossus Lab](https://github.com/THCLab). En plus de permettre la création de schéma OCA et offre la possibilité de les publier dans un [dépôt commun](https://repository.oca.argo.colossi.network).
 
 Le schéma OCA [schéma OCA de l'expérimentation](https://repository.oca.argo.colossi.network/api/v4/schemas/E0ttcf4zZhRiTkazvq8X4T69q3hzug6t8zR8mAaMCe1U) inclut deux couches de libellés, une en français et une en anglais. Une couche de format est également incluse pour personaliser les attributs "birth_date" et "issued". Les noms d'attribut de la couche de base sont les mêmes que ceux de l'attestation afin d'appliquer les différentes personalisation correctement.
+
+## Identifiant auto adressable (Self Addressing Identifier - SAI)
+Un identifiant auto adressable est un identifiant qui est généré de manière déterministe à partir du contenu qu'il identifie et qui y est intégré, ce qui le rend, ainsi que ses données, mutuellement inviolables.
+
+### Pour générer un SAI
+1. Remplissez entièrement les données que le SAID identifiera, en laissant un espace pour la valeur du SAID lui-même.
+2 .Canonicalisez les données, si nécessaire. Le résultat est appelé la base identifiable du SAID.
+3. Hacher la base identifiable. Le résultat est la valeur du SAID.
+4. Remplacer le caractère générique de la base identifiable par l'identifiant nouvellement généré, de sorte que le SAID soit intégré aux données qu'il identifie. Le résultat est appelé les données identifiées.
+
+### Pour Vérifier un SAI
+1. Canonicalisez les données, si nécessaire. Le résultat est une donnée saidifiée revendiquée.
+2. Dans les données saidifiées revendiquées, remplacez la valeur du SAID par un espace réservé. Le résultat est la base identifiable pour le SAID.
+3. Hacher la base identifiable.
+4. Comparez la valeur de hachage au SAID. S'ils sont égaux, alors le SAID identifie les données saidifiées revendiquées.
+
+https://github-wiki-see.page/m/trustoverip/acdc-tf-terms/wiki/self-addressing-identifier-%28SAID%29
+
+# Intégration d'OCA dans Bifold
+Plusieurs considérations doivent être prises en compte :
+1. Quelles sont les fonctionnalités d'OCA qui nous intéressent (portéé);
+2. À quel endroit on va stocker les schémas OCA;
+3. Comment configurer Bifold pour retrouver le dépôt de schémas OCA;
+4. Comment Bifold va appliquer le rendu des différentes couches OCA sur une attestation;
+
+# 6.0 Résultats attendus
+1. Un schéma au format _anoncred_ et une définition d'attestation associée sont enregistrées dans le registre de preuve (aka chaîne de blocs);
+2. Un schéma OCA incluant une chouche de base ayant les même attributs que le schéma AnonCred, une couche superposée d'étiquettes en français-anglais et une couche superposée de mise ne page comportant un logo et un positionnement d'informations;
+3. Le schéma OCA est publié dans un dépôt;
+4. Une attestation, bassée sur le schéma et la définition d'attestation créé au point 1, est émise dans le porte-feuille "ARIES Mobile Agent React Native";
+5. À l'affichage de l'attestation dans le porte-feuille Bifold, le schéma OCA est récupéré dans le dépôt;
+6. Les libellés (nom d'attribut) de l'attestation sont remplacés par ceux définit dans les couches superposées du schéma OCA;
+7. Une zone affiche, sous forme de HTML et de css, les informations définit dans la couche superposée de mise en page;
+
+# 7.0 Analyse
+L'expérimentation a permis de montrer qu'il est possible d'utiliser OCA pour supporter l'internationalisation et l'image de marque (_branding_) d'une attestation dans le porte-feuille "ARIES Mobile Agent React Native". De plus, OCA offre plusieurs autres fonctionnalités comme la gestion des informations sensibles, l'encodage des caractères, la description d'attribut, etc. qui n'ont pas été exploré. L'intégration d'OCA dans le porte-feuile a été assez rapide étant donné que des implémentations des diffétrentes composantes existent déjà.
+
+La création d'un paquet OCA est simple en utilisant l'[éditeur de schéma OCA](https://github.com/THCLab/oca-editor). Par contre, l'alignement des attributs du schéma de base avec ceux de l'_anoncred_ peut représenter une source d'erreurs. L'[éditeur de schéma OCA](https://github.com/THCLab/oca-editor) pourrait être modifié afin d'émettre une _anoncred_ ainsi que sa définition d'attestation (_credential definition_) automatiquement dans le registre de preuve (_Indy blockchain_).
+
+La creation d'une couche superposée pour la mise en page d'une attestation est plus compliquée. Le mixte du format YAML et de morceau de CSS est difficile à écrire et à lire. Il sujet à beaucoup d'erreur. Au minimum, un outil de visualisation du rendu devrait être créé pour aider et permettre de valider l'affichage avant la publication du schéma dans le dépôt. Un éditeur WYSYWYG serait la meilleur solution à fournir aux émetteurs pour la production.
+
+#8.0 Conclusion
