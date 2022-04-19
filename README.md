@@ -24,8 +24,8 @@ Une superposition d'information peut être utilisé pour ajouter une prose péda
 
 ### Superposition d'attribut sensible
 
-### Superposition de mise en page
-Une superposition de mise en page peut être utilisé pour afficher les données capturées par le schéma sous une forme libre (positionnement des libellés, des champs, image de fond, etc.). La définition de la mise en page est un mixte de YAML incluant du CSS (format propriétaire).
+### Superposition de mise en page d'attestation
+Une superposition de mise en page d'attestation peut être utilisé pour afficher les données capturées par le schéma avec, par exemple, une image de marque (_branding_). Elle permet le positionnement de texte (données et libellés), l'insertion d'images, etc. Les instructions pour définir la mise en page est un mixte de [YAML](https://yaml.org/) et de [CSS](https://fr.wikipedia.org/wiki/Feuilles_de_style_en_cascade). Le format semble propriétaire.
 
 ## 1.0 Objectifs
 - Comprendre le standard Overlay Capture Architecture (OCA) et ses applications possibles;
@@ -103,6 +103,36 @@ Un identifiant auto adressable est un identifiant qui est généré de manière 
 
 https://github-wiki-see.page/m/trustoverip/acdc-tf-terms/wiki/self-addressing-identifier-%28SAID%29
 
+Exemple de mise en page d'attestation:
+P.S.: L'exemple ci-bas n'est pas fonctionnel. Il a été abrégé pour montrer uniquement les différentes instructions permettant la msie en page.
+```
+config:
+  width: 400px
+  height: 300px
+pages:
+  - config:
+      style: \"width: 380px; height: 280px; margin: 10;\"
+      background_image: SAI:zQmQg7JDptBT4CdfHuJNqfxpXf8AbvgdWes9h2731oF37ak
+      name: Front
+    elements:
+      - type: row
+        config:
+          style: \"height: 30px;\"
+...
+                    elements:
+                      - type: content
+                        text: DL
+                        config:
+                          style: \"font-size: 14px; color: #1739ba; font-weight: bold; display: inline-block;\"
+                      - type: attribute
+                        name: drivingLicenseID
+                        part: data
+                        config:
+                          style: \"display: inline-block; padding-left: 10px; text-transform: uppercase; font-size: 21px; color: #a62523;\"
+...
+```
+
+
 # Intégration d'OCA dans Bifold
 Plusieurs considérations doivent être prises en compte :
 1. Quelles sont les fonctionnalités d'OCA qui nous intéressent (portéé);
@@ -123,7 +153,8 @@ Plusieurs considérations doivent être prises en compte :
 L'expérimentation a permis de montrer qu'il est possible d'utiliser _OCA_ pour supporter l'internationalisation et l'affichage de l'image de marque (_branding_) d'une attestation dans le portefeuille "ARIES Mobile Agent React Native". De plus, _OCA_ offre d'autres possibilités comme l'identification des informations sensibles, l'encodage des caractères, la description d'attributs, etc. qui n'ont pas été explorées. L'intégration d'OCA dans le portefeuille a été relativement rapide étant donné que des implémentations sont déjà disponibles.
 
 La création d'un paquet OCA est simple en utilisant l'[éditeur de schéma OCA](https://github.com/THCLab/oca-editor). Par contre, l'alignement des attributs du schéma de base avec ceux de l'_anoncred_ peut représenter une source d'erreurs. Cet outil pourrait être modifié afin d'émettre une _anoncred_ et sa définition d'attestation (_credential definition_) automatiquement dans le registre de preuve (_Indy blockchain_) lors de la publication du paquet OCA.
+## 7.1 
+La creation d'une superpositon pour l'affichage d'une image de marque (_CredentialOverlay_) est plus compliquée. Son format, qui inclut un mixte de YAML et de CSS, est difficile à écrire et à lire. Il est sujet à beaucoup d'erreur. Au minimum, un outil de pré-visualisation du rendu devrait être créé pour permettre de valider l'affichage avant la publication du paquet OCA dans le dépôt. Dans un monde idéal, un éditeur visuel de type _What You See - What You Get (WYSIWYG)_ serait la meilleure solution à fournir aux éventuels émetteurs dans un environnement de production. Le rendu de l'image de marque de l'attestation a été avec la composante [React Native WebView](https://www.npmjs.com/package/react-native-webview). Bien que cette dernière offre une grande compatibilité pour l'afficage d'HTML-CSS-Javascript, le rendu de l'image de marque de l,attestation est assez lent (du moins avec un émulateur de [Android Studio](https://developer.android.com/studio)). Des essais de performance plus poussés devraient être effectués pour confirmer si ce choix est judicieux.
 
-La creation d'une superpositon pour l'affichage d'une image de marque est plus compliquée. Son format, qui inclut un mixte de YAML et de CSS, est difficile à écrire et à lire. Il est sujet à beaucoup d'erreur. Au minimum, un outil de pré-visualisation du rendu devrait être créé pour permettre de valider l'affichage avant la publication du paquet OCA dans le dépôt. Dans un monde idéal, un éditeur visuel de type _What You See - What You Get (WYSIWYG)_ serait la meilleure solution à fournir aux éventuels émetteurs dans un environnement de production. Le rendu de l'image de marque de l'attestation a été avec la composante [React Native WebView](https://www.npmjs.com/package/react-native-webview). Bien que cette dernière soit très efficace pour afficher du HTML-CSS-Javascript, le rendu reste assez peu performant (du moins avec un émulateur de [Android Studio](https://developer.android.com/studio)). Des essais de perfromance plus poussés devraient être effectué pour confirmer que ce choix est judicieux.
 
 #8.0 Conclusion
