@@ -37,6 +37,9 @@ Une superposition d'information peut être utilisé pour ajouter une prose péda
 ### Superposition de mise en page d'attestation
 Une superposition de mise en page d'attestation peut être utilisé pour afficher les données capturées par le schéma avec, par exemple, une image de marque (_branding_). Elle permet le positionnement de texte (données et libellés), l'insertion d'images, etc. Les instructions pour définir la mise en page est un mixte de [YAML](https://yaml.org/) et de [CSS](https://fr.wikipedia.org/wiki/Feuilles_de_style_en_cascade). Le format semble propriétaire.
 
+### Identifiant auto adressable (_Self Addressing Identifier - SAI_)
+Le schéma de capture de base et les superpositions d'un paquet _OCA_ sont liés ensembles par des identifiants auto adressable. Un [identifiant auto adressable](https://github-wiki-see.page/m/trustoverip/acdc-tf-terms/wiki/self-addressing-identifier-%28SAID%29) est un identifiant qui est généré de manière déterministe à partir du contenu qu'il identifie et qui y est intégré, ce qui le rend, ainsi que ses données, mutuellement inviolables. Ce type d'identifiant permet de s'assurer que le contenu qu'il identifie n'a pas été alteré. Un paquet _OCA_ publié dans un dépôt peut également être identifié par un identifiant auto adressable. Cela permet de s'assurer que ce dernier est authentique et qu'il n'a pas changé depuis sa publication. 
+
 ## 3.0 Motivations
 Le besoin initiale qui a mené à cette expérimentation était de pouvoir émettre des attestations multilingues et comportant une image de marque (_branding_). Par exemple, une attestation représentant un permis de conduire pourrait être affichée dans le portefeuille avec un logo du Québec et une image en arrière-plan afin de le reconnaître rapidement. De plus, la traduction des attributs de l'attestation offre implicitement la possibilité de les afficher sous une forme plus lisible par un humain. Tel que décrit dans la requête pour commentaires [ARIES RFC 0043: I10n (Locali[s|z]ation)](https://github.com/hyperledger/aries-rfcs/blob/main/features/0043-l10n/README.md), le principal cas d'utilisation de DIDComm est la prise en charge du traitement automatisé, comme dans le cas des messages qui conduisent à la délivrance d'une attestation, à l'échange d'une preuve, etc. Le traitement automatisé peut être le seul moyen pour certains agents de traiter les messages, s'il s'agit de dispositifs ou de logiciels gérés par des organisations sans intervention humaine. Cependant, de nombreuses interactions requiert une intervention humaine. Par exemple, l'envoit d'une preuve à partir d'un portefeuille mobile. C'est pourquoi, losque des humains sont impliqués, la localisation et la traduction potentielle dans diverses langues naturelles deviennent importantes. Au moment d'écrire ces lignes, le statut de la requête pour commentaires [ARIES RFC 0043: I10n (Locali[s|z]ation)](https://github.com/hyperledger/aries-rfcs/blob/main/features/0043-l10n/README.md) est "Démontrée" mais elle n'a pas encore été implémentée. Comme le standard [_Overlay Capture Architecture (OCA_)](https://oca.colossi.network/) offre, entres autres, la possibilité de créer des superpositions de libellés dans différentes langues pour changer les noms d'attributs du schéma, cela rendait cette expérimentation profitable.
 
@@ -91,22 +94,7 @@ Un [éditeur de schéma OCA](https://github.com/THCLab/oca-editor) est disponibl
 
 Le schéma OCA [schéma OCA de l'expérimentation](https://repository.oca.argo.colossi.network/api/v4/schemas/E0ttcf4zZhRiTkazvq8X4T69q3hzug6t8zR8mAaMCe1U) inclut deux couches de libellés, une en français et une en anglais. Une couche de format est également incluse pour personaliser les attributs "birth_date" et "issued". Les noms d'attribut de la couche de base sont les mêmes que ceux de l'attestation afin d'appliquer les différentes personalisation correctement.
 
-## Identifiant auto adressable (Self Addressing Identifier - SAI)
-Un identifiant auto adressable est un identifiant qui est généré de manière déterministe à partir du contenu qu'il identifie et qui y est intégré, ce qui le rend, ainsi que ses données, mutuellement inviolables.
 
-### Pour générer un SAI
-1. Remplissez entièrement les données que le SAID identifiera, en laissant un espace pour la valeur du SAID lui-même.
-2 .Canonicalisez les données, si nécessaire. Le résultat est appelé la base identifiable du SAID.
-3. Hacher la base identifiable. Le résultat est la valeur du SAID.
-4. Remplacer le caractère générique de la base identifiable par l'identifiant nouvellement généré, de sorte que le SAID soit intégré aux données qu'il identifie. Le résultat est appelé les données identifiées.
-
-### Pour Vérifier un SAI
-1. Canonicalisez les données, si nécessaire. Le résultat est une donnée saidifiée revendiquée.
-2. Dans les données saidifiées revendiquées, remplacez la valeur du SAID par un espace réservé. Le résultat est la base identifiable pour le SAID.
-3. Hacher la base identifiable.
-4. Comparez la valeur de hachage au SAID. S'ils sont égaux, alors le SAID identifie les données saidifiées revendiquées.
-
-https://github-wiki-see.page/m/trustoverip/acdc-tf-terms/wiki/self-addressing-identifier-%28SAID%29
 
 Exemple de mise en page d'attestation:
 P.S.: L'exemple ci-bas n'est pas fonctionnel. Il a été abrégé pour montrer uniquement les différentes instructions permettant la msie en page.
@@ -147,8 +135,8 @@ Plusieurs considérations doivent être prises en compte :
 
 # 6.0 Résultats attendus
 1. Un schéma au format _anoncred_ et une définition d'attestation associée sont enregistrées dans le registre de preuve [CANdy-Dev-Network](https://candy-dev.cloudcompass.ca/);
-2. Un paquet OCA dont le schéma de base possède les mêmes attributs que le schéma au format _anoncred_, une couche superposée d'étiquettes en français-anglais et une couche superposée de mise ne page comportant un logo et un positionnement d'informations;
-3. Le schéma OCA est publié dans un dépôt;
+2. Un paquet _Overlay Capture Architecture (OCA)_ dont le schéma de base possède les mêmes attributs que le schéma au format _anoncred_, des superpositions de libellés en français-anglais et une superposition de mise en page d'attestation comportant un logo et un positionnement d'informations;
+3. Le paquet _Overlay Capture Architecture (OCA)_ est publié dans un dépôt;
 4. Une attestation (voir le point 1) émise dans le portefeuille "ARIES Mobile Agent React Native";
 5. À l'affichage de l'attestation dans le portefeuille "ARIES Mobile Agent React Native", le paquet OCA est récupéré dans le dépôt;
 6. Les noms d'attribut de l'attestation sont remplacés par ceux définit dans les superpositions de libellé français ou anglais du paquet OCA;
