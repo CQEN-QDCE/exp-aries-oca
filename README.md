@@ -1,8 +1,15 @@
 # Intégrer le standard Overlay Capture Architecture (OCA) à l'écosystème ARIES
 Voici les travaux réalisés dans le cadre d'une expérimentation visant à intégrer le standard [Overlay Capture Architecture (OCA)](https://oca.colossi.network/) à l'écosystème [ARIES](https://www.hyperledger.org/use/aries) tel que proposé dans la requête pour commentaires [ARIES RFC 0013: Overlays](https://github.com/hyperledger/aries-rfcs/blob/main/concepts/0013-overlays/README.md).
 
-Qu'est-ce qu'OCA
-Overlay Capture Architecture (OCA) est une architecture de capture de données par superposition. Elle représente un schéma comme un objet multidimensionnel composé d'une base de capture stable et de superpositions liées qui viennent enrichir la base de capture.
+### Qu'est-ce que le standard _Overlay Capture Architecture (OCA)_
+_Overlay Capture Architecture (OCA)_ est une architecture de capture de données par superposition. Elle représente un schéma comme un objet multidimensionnel composé d'une base de capture stable et de superpositions liées qui viennent enrichir la base de capture.
+
+<p align="center">
+  <img src="images/diagramme-oca.png" label="Overlay Capture Architecture (OCA)" />
+
+  <br>
+  <b>Contexte de l'histoire d'Alice</b>
+</p>
 
 ### Superposition de méta-informations
 Une superposition de méta-informations peut être utilisé pour ajouter des informations contextuelles sur le schéma de base, notamment son nom , sa description, etc.
@@ -141,13 +148,13 @@ Plusieurs considérations doivent être prises en compte :
 4. Comment Bifold va appliquer le rendu des différentes couches OCA sur une attestation;
 
 # 6.0 Résultats attendus
-1. Un schéma au format _anoncred_ et une définition d'attestation associée sont enregistrées dans le registre de preuve (aka chaîne de blocs);
-2. Un schéma OCA incluant une chouche de base ayant les même attributs que le schéma AnonCred, une couche superposée d'étiquettes en français-anglais et une couche superposée de mise ne page comportant un logo et un positionnement d'informations;
+1. Un schéma au format _anoncred_ et une définition d'attestation associée sont enregistrées dans le registre de preuve [CANdy-Dev-Network](https://candy-dev.cloudcompass.ca/);
+2. Un paquet OCA dont le schéma de base possède les mêmes attributs que le schéma au format _anoncred_, une couche superposée d'étiquettes en français-anglais et une couche superposée de mise ne page comportant un logo et un positionnement d'informations;
 3. Le schéma OCA est publié dans un dépôt;
-4. Une attestation, bassée sur le schéma et la définition d'attestation créé au point 1, est émise dans le porte-feuille "ARIES Mobile Agent React Native";
-5. À l'affichage de l'attestation dans le porte-feuille Bifold, le schéma OCA est récupéré dans le dépôt;
-6. Les libellés (nom d'attribut) de l'attestation sont remplacés par ceux définit dans les couches superposées du schéma OCA;
-7. Une zone affiche, sous forme de HTML et de css, les informations définit dans la couche superposée de mise en page;
+4. Une attestation (voir le point 1) émise dans le portefeuille "ARIES Mobile Agent React Native";
+5. À l'affichage de l'attestation dans le portefeuille "ARIES Mobile Agent React Native", le paquet OCA est récupéré dans le dépôt;
+6. Les noms d'attribut de l'attestation sont remplacés par ceux définit dans les superpositions de libellé français ou anglais du paquet OCA;
+7. Les informations définit dans la superposition de mise en page d'attestation (image de marque) sont affichées au format HTML et CSS;
 
 # 7.0 Analyse
 L'expérimentation a permis de montrer qu'il est possible d'utiliser _OCA_ pour supporter l'internationalisation et l'affichage de l'image de marque (_branding_) d'une attestation dans le portefeuille "ARIES Mobile Agent React Native". De plus, _OCA_ offre d'autres possibilités comme l'identification des informations sensibles, l'encodage des caractères, la description d'attributs, etc. qui n'ont pas été explorées. L'intégration d'OCA dans le portefeuille a été relativement rapide étant donné que des implémentations sont déjà disponibles.
