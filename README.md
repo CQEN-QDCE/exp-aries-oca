@@ -29,15 +29,13 @@ Une superposition de libellé peut être utilisé pour ajouter des étiquettes d
 ### Superposition d'information
 Une superposition d'information peut être utilisé pour ajouter une prose pédagogique, informative ou juridique afin de faciliter le processus de saisie des données.
 
-### Superposition d'attribut sensible
-
 ### Superposition de mise en page d'attestation
 Une superposition de mise en page d'attestation peut être utilisé pour afficher les données capturées par le schéma avec, par exemple, une image de marque (_branding_). Elle permet le positionnement de texte (données et libellés), l'insertion d'images, etc. Les instructions pour définir la mise en page est un mixte de [YAML](https://yaml.org/) et de [CSS](https://fr.wikipedia.org/wiki/Feuilles_de_style_en_cascade). Le format semble propriétaire.
 
 ## 1.0 Objectifs
-- Comprendre le standard Overlay Capture Architecture (OCA) et ses applications possibles;
-- Définir un schéma Overlay Capture Architecture (OCA) permettant la personalisation d'une attestation Indy (traduction, format de données, etc.);
-- Modifier le porte-feuille [ARIES Mobile Agent React Native](https://github.com/hyperledger/aries-mobile-agent-react-native) pour qu'il affiche une attestation personnalisée;
+- Comprendre le standard _Overlay Capture Architecture (OCA)_;
+- Créer un paquet _Overlay Capture Architecture (OCA)_ incluant des superpositons de libellé français-anglais et une superposition de mise en page d'attestation;
+- Modifier le portefeuille [ARIES Mobile Agent React Native](https://github.com/hyperledger/aries-mobile-agent-react-native) pour qu'il affiche une attestation modifiée par les superpositions du paquet _Overlay Capture Architecture (OCA)_;
 
 ## 2.0 Motivations
 Le besoin intiale qui a mené à cette expérimentaion était de pouvoir afficher dans une forme plus lisible par un humain et par la même occasion traduire les attributs d'une attestation. Tel que décrit dans la requête pour commentaires [ARIES RFC 0043: I10n (Locali[s|z]ation)](https://github.com/hyperledger/aries-rfcs/blob/main/features/0043-l10n/README.md), le principal cas d'utilisation de DIDComm est la prise en charge du traitement automatisé, comme dans le cas des messages qui conduisent à la délivrance d'une attestation, à l'échange d'une preuve, etc. Le traitement automatisé peut être le seul moyen pour certains agents de traiter les messages, s'il s'agit de dispositifs ou de logiciels gérés par des organisations sans intervention humaine. Cependant, de nombreuses interactions requiert une intervention humaine. Par exemple, l'envoit d'une preuve à partir d'un porte-feuille mobile. C'est pourquoi, losque des humains sont impliqués, la localisation et la traduction potentielle dans diverses langues naturelles deviennent importantes. Au moment d'écrire ces lignes, le statut de la requête pour commentaires [ARIES RFC 0043: I10n (Locali[s|z]ation)](https://github.com/hyperledger/aries-rfcs/blob/main/features/0043-l10n/README.md) est "Démontrée" mais elle n'a pas encore été implémentée. Comme le standard [Overlay Capture Architecture (OCA)](https://oca.colossi.network/) offre la possibilité de créer une ou plusieurs couches personalisées d'étiquettes pour les attributs du schéma et beaucoup plus encore,cela rendait cette expérimentation encore plus profitable à essayer.
