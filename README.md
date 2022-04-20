@@ -1,7 +1,12 @@
 # Utiliser le standard _Overlay Capture Architecture (OCA)_ pour émettre des attestations multilingues
 Voici les travaux réalisés dans le cadre d'une expérimentation visant à démontrer la pertinence d'utiliser le standard [Overlay Capture Architecture (OCA)](https://oca.colossi.network/) pour émettre des attestations multilingues tel que proposé dans la requête pour commentaires [ARIES RFC 0013: Overlays](https://github.com/hyperledger/aries-rfcs/blob/main/concepts/0013-overlays/README.md).
 
-### Qu'est-ce que le standard _Overlay Capture Architecture (OCA)_
+## 1.0 Objectifs
+- Comprendre le standard _Overlay Capture Architecture (OCA)_;
+- Créer un paquet _Overlay Capture Architecture (OCA)_ incluant des superpositons de libellé français-anglais et une superposition de mise en page d'attestation;
+- Modifier le portefeuille [ARIES Mobile Agent React Native](https://github.com/hyperledger/aries-mobile-agent-react-native) pour qu'il affiche une attestation modifiée par les superpositions du paquet _Overlay Capture Architecture (OCA)_;
+
+## 2.0 Contexte
 _Overlay Capture Architecture (OCA)_ est une architecture de capture de données. Elle représente un schéma comme un objet multidimensionnel composé d'une base de capture stable et de superpositions liées qui viennent enrichir la base de capture.
 
 <p align="center">
@@ -32,12 +37,7 @@ Une superposition d'information peut être utilisé pour ajouter une prose péda
 ### Superposition de mise en page d'attestation
 Une superposition de mise en page d'attestation peut être utilisé pour afficher les données capturées par le schéma avec, par exemple, une image de marque (_branding_). Elle permet le positionnement de texte (données et libellés), l'insertion d'images, etc. Les instructions pour définir la mise en page est un mixte de [YAML](https://yaml.org/) et de [CSS](https://fr.wikipedia.org/wiki/Feuilles_de_style_en_cascade). Le format semble propriétaire.
 
-## 1.0 Objectifs
-- Comprendre le standard _Overlay Capture Architecture (OCA)_;
-- Créer un paquet _Overlay Capture Architecture (OCA)_ incluant des superpositons de libellé français-anglais et une superposition de mise en page d'attestation;
-- Modifier le portefeuille [ARIES Mobile Agent React Native](https://github.com/hyperledger/aries-mobile-agent-react-native) pour qu'il affiche une attestation modifiée par les superpositions du paquet _Overlay Capture Architecture (OCA)_;
-
-## 2.0 Motivations
+## 3.0 Motivations
 Le besoin initiale qui a mené à cette expérimentation était de pouvoir émettre des attestations multilingues et comportant une image de marque (_branding_). Par exemple, une attestation représentant un permis de conduire pourrait être affichée dans le portefeuille avec un logo du Québec et une image en arrière-plan afin de le reconnaître rapidement. De plus, la traduction des attributs de l'attestation offre implicitement la possibilité de les afficher sous une forme plus lisible par un humain. Tel que décrit dans la requête pour commentaires [ARIES RFC 0043: I10n (Locali[s|z]ation)](https://github.com/hyperledger/aries-rfcs/blob/main/features/0043-l10n/README.md), le principal cas d'utilisation de DIDComm est la prise en charge du traitement automatisé, comme dans le cas des messages qui conduisent à la délivrance d'une attestation, à l'échange d'une preuve, etc. Le traitement automatisé peut être le seul moyen pour certains agents de traiter les messages, s'il s'agit de dispositifs ou de logiciels gérés par des organisations sans intervention humaine. Cependant, de nombreuses interactions requiert une intervention humaine. Par exemple, l'envoit d'une preuve à partir d'un portefeuille mobile. C'est pourquoi, losque des humains sont impliqués, la localisation et la traduction potentielle dans diverses langues naturelles deviennent importantes. Au moment d'écrire ces lignes, le statut de la requête pour commentaires [ARIES RFC 0043: I10n (Locali[s|z]ation)](https://github.com/hyperledger/aries-rfcs/blob/main/features/0043-l10n/README.md) est "Démontrée" mais elle n'a pas encore été implémentée. Comme le standard [_Overlay Capture Architecture (OCA_)](https://oca.colossi.network/) offre, entres autres, la possibilité de créer des superpositions de libellés dans différentes langues pour changer les noms d'attributs du schéma, cela rendait cette expérimentation profitable.
 
 ## 3.0 Environnement d\'expérimentation
