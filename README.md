@@ -4,10 +4,10 @@ Voici les travaux réalisés dans le cadre d'une expérimentation visant à dém
 ## 1.0 Objectifs
 - Comprendre le standard _Overlay Capture Architecture (OCA)_;
 
-- Modifier le portefeuille [ARIES Mobile Agent React Native](https://github.com/hyperledger/aries-mobile-agent-react-native) pour qu'il affiche une attestation en français-anglais ainsi qu'une image de marque (_branding_) en utilisant le standard _Overlay Capture Architecture (OCA)_;
+- Modifier le portefeuille [ARIES Mobile Agent React Native](https://github.com/hyperledger/aries-mobile-agent-react-native) pour qu'il affiche une attestation en français-anglais incluant une image de marque (_branding_);
 
 ## 2.0 Contexte
-_Overlay Capture Architecture (OCA)_ est une architecture de capture de données. Elle représente un schéma comme un objet multidimensionnel composé d'une base de capture stable et de superpositions liées qui viennent enrichir la base de capture.
+_Overlay Capture Architecture (OCA)_ est une architecture de capture de données. Elle représente un schéma comme un objet multidimensionnel composé d'une base de capture stable et des superpositions liées qui viennent enrichir la base de capture.
 
 <p align="center">
   <img src="images/diagramme-oca.png" label="Overlay Capture Architecture (OCA)" />
@@ -16,32 +16,35 @@ _Overlay Capture Architecture (OCA)_ est une architecture de capture de données
   <b>Contexte de l'histoire d'Alice</b>
 </p>
 
-### Superposition de méta-informations
-Une superposition de méta-informations peut être utilisé pour ajouter des informations contextuelles sur le schéma de base, notamment son nom , sa description, etc.
+### Superposition de méta-information
+Une superposition de méta-information peut être utilisée pour ajouter des informations contextuelles sur la base de capture, notamment son nom , sa description, etc.
 
-### Superposition d'encodage des caractères
-Une superposition d'encodage des caractères peut être utilisé pour définir l'encodage du jeu de caractères (par exemple UTF-8, ISO-8859-1, Windows-1251, Base58Check, etc.). Elle peut être utile pour mettre en œuvre des solutions qui facilitent la saisie de données dans plusieurs langues.
+### Superposition d'encodage de caractère
+Une superposition d'encodage de caractère peut être utilisée pour définir l'encodage du jeu de caractères (par exemple UTF-8, ISO-8859-1, Windows-1251, Base58Check, etc.). Elle peut être utile pour mettre en œuvre des solutions qui facilitent la saisie de données dans plusieurs langues.
 
 ### Superposition de format
-Une superposition de format peut être utilisé pour ajouter des formats, des longueurs de champ ou des schémas de codage de dictionnaire aux attributs du schéma.
+Une superposition de format peut être utilisée pour ajouter des formats, des longueurs de champ ou des schémas de codage de dictionnaire aux attributs de la base de capture.
 
 ### Superposition de saisie
-Une superposition de saisie peut être utilisé pour ajouter des valeurs de champ prédéfinies dans une langue spécifiée aux attributs du schéma. Pour minimiser le risque de capture de données PII imprévues, il est préférable d'éviter la mise en œuvre de champs de texte libre. Ce type de superposition permet de saisir des données structurées, ce qui élimine le risque de capturer et de stocker ultérieurement des données dangereuses.
+Une superposition de saisie peut être utilisée pour ajouter des valeurs de champ prédéfinies dans une langue spécifiée aux attributs de la base de capture. Pour minimiser le risque de capture de données PII imprévues, il est préférable d'éviter la mise en œuvre de champs de texte libre. Ce type de superposition permet de saisir des données structurées, ce qui élimine le risque de capturer et de stocker ultérieurement des données dangereuses.
 
 ### Superposition de libellé
-Une superposition de libellé peut être utilisé pour ajouter des étiquettes dans une langue spécifique aux attributs et catégories du schéma. Ce type de superposition permet d'afficher les étiquettes dans une langue spécifique au niveau de la couche de présentation pour une meilleure compréhension par l'utilisateur final.
+Une superposition de libellé peut être utilisée pour ajouter des étiquettes dans une langue spécifique aux attributs et aux catégories de la abse de capture. Ce type de superposition permet d'afficher les étiquettes dans une langue spécifique au niveau de la couche de présentation pour une meilleure compréhension par l'utilisateur final.
 
 ### Superposition d'information
-Une superposition d'information peut être utilisé pour ajouter une prose pédagogique, informative ou juridique afin de faciliter le processus de saisie des données.
+Une superposition d'information peut être utilisée pour ajouter une prose pédagogique, informative ou juridique afin de faciliter le processus de saisie des données.
 
 ### Superposition de mise en page d'attestation
-Une superposition de mise en page d'attestation peut être utilisé pour afficher les données capturées par le schéma avec, par exemple, une image de marque (_branding_). Elle permet le positionnement de texte (données et libellés), l'insertion d'images, etc. Les instructions pour définir la mise en page est un mixte de [YAML](https://yaml.org/) et de [CSS](https://fr.wikipedia.org/wiki/Feuilles_de_style_en_cascade). Le format semble propriétaire.
+Une superposition de mise en page d'attestation peut être utilisée pour afficher les données capturées par le schéma avec, par exemple, une image de marque (_branding_). Elle permet le positionnement de texte (données et libellés), l'insertion d'images, etc. Les instructions pour définir la mise en page est un mixte de [YAML](https://yaml.org/) et de [CSS](https://fr.wikipedia.org/wiki/Feuilles_de_style_en_cascade).
+
+### Paquet _Overlay Capture Architecture (OCA)_
+La base de capture et les superpositions liées sont définit dans des documents au format JSON. Lors de la sauvegarde, ils sont insérés dans une archive au format zip. Ce dernier représente un paquet (_bundle_) _Overlay Capture Architecture (OCA)_.
 
 ### Identifiant auto adressable (_Self Addressing Identifier - SAI_)
-Le schéma de capture de base et les superpositions d'un paquet _OCA_ sont liés ensembles par des identifiants auto adressable. Un [identifiant auto adressable](https://github-wiki-see.page/m/trustoverip/acdc-tf-terms/wiki/self-addressing-identifier-%28SAID%29) est un identifiant qui est généré de manière déterministe à partir du contenu qu'il identifie et qui y est intégré, ce qui le rend, ainsi que ses données, mutuellement inviolables. Ce type d'identifiant permet de s'assurer que le contenu qu'il identifie n'a pas été alteré. Un paquet _OCA_ publié dans un dépôt peut également être identifié par un identifiant auto adressable. Cela permet de s'assurer que ce dernier est authentique et qu'il n'a pas changé depuis sa publication. 
+Le base de capture et les superpositions sont liés ensemble par des identifiants auto-adressables. Un [identifiant auto-adressable](https://github-wiki-see.page/m/trustoverip/acdc-tf-terms/wiki/self-addressing-identifier-%28SAID%29) est un identifiant qui est généré de manière déterministe à partir du contenu qu'il identifie et qui y est intégré, ce qui le rend, ainsi que ses données, mutuellement inviolables. Ce type d'identifiant permet de s'assurer que le contenu qu'il identifie n'a pas été altéré. Un identifiant auto-adressable peut être calculé pour identifier un paquet _Overlay Capture Architecture (OCA)_. On peut ainsi s'assurer que ce dernier est authentique et qu'il n'a pas changé depuis sa création. 
 
 ## 3.0 Motivations
-Le besoin initiale qui a mené à cette expérimentation était de pouvoir émettre des attestations multilingues et comportant une image de marque (_branding_). Par exemple, une attestation représentant un permis de conduire pourrait être affichée dans le portefeuille avec un logo du Québec et une image en arrière-plan afin de le reconnaître rapidement. De plus, la traduction des attributs de l'attestation offre implicitement la possibilité de les afficher sous une forme plus lisible par un humain. Tel que décrit dans la requête pour commentaires [ARIES RFC 0043: I10n (Locali[s|z]ation)](https://github.com/hyperledger/aries-rfcs/blob/main/features/0043-l10n/README.md), le principal cas d'utilisation de DIDComm est la prise en charge du traitement automatisé, comme dans le cas des messages qui conduisent à la délivrance d'une attestation, à l'échange d'une preuve, etc. Le traitement automatisé peut être le seul moyen pour certains agents de traiter les messages, s'il s'agit de dispositifs ou de logiciels gérés par des organisations sans intervention humaine. Cependant, de nombreuses interactions requiert une intervention humaine. Par exemple, l'envoit d'une preuve à partir d'un portefeuille mobile. C'est pourquoi, losque des humains sont impliqués, la localisation et la traduction potentielle dans diverses langues naturelles deviennent importantes. Au moment d'écrire ces lignes, le statut de la requête pour commentaires [ARIES RFC 0043: I10n (Locali[s|z]ation)](https://github.com/hyperledger/aries-rfcs/blob/main/features/0043-l10n/README.md) est "Démontrée" mais elle n'a pas encore été implémentée. Comme le standard [_Overlay Capture Architecture (OCA_)](https://oca.colossi.network/) offre, entres autres, la possibilité de créer des superpositions de libellés dans différentes langues pour changer les noms d'attributs du schéma, cela rendait cette expérimentation profitable.
+Le besoin initial qui a mené à cette expérimentation était de pouvoir émettre des attestations multilingues incluant une image de marque (_branding_). On peut penser à une attestation représentant un permis de conduire affichée dans le portefeuille sous forme de carte avec un logo du Québec et une image en arrière-plan. De plus, la traduction des attributs de l'attestation offre implicitement la possibilité de les afficher sous une forme plus lisible par un humain. Tel que décrit dans la requête pour commentaires [ARIES RFC 0043: I10n (Locali[s|z]ation)](https://github.com/hyperledger/aries-rfcs/blob/main/features/0043-l10n/README.md), le principal cas d'utilisation de DIDComm est la prise en charge du traitement automatisé, comme dans le cas des messages qui conduisent à la délivrance d'une attestation, à l'échange d'une preuve, etc. Le traitement automatisé peut être le seul moyen pour certains agents de traiter les messages, s'il s'agit de dispositifs ou de logiciels gérés par des organisations sans intervention humaine. Cependant, de nombreuses interactions requiert une intervention humaine. Par exemple, l'envoit d'une preuve à partir d'un portefeuille mobile. C'est pourquoi, losque des humains sont impliqués, la localisation et la traduction potentielle dans diverses langues naturelles deviennent importantes. Au moment d'écrire ces lignes, le statut de la requête pour commentaires [ARIES RFC 0043: I10n (Locali[s|z]ation)](https://github.com/hyperledger/aries-rfcs/blob/main/features/0043-l10n/README.md) est "Démontrée" mais elle n'a pas encore été implémentée. Comme le standard [_Overlay Capture Architecture (OCA_)](https://oca.colossi.network/) offre, entre autres, la possibilité de créer des superpositions de libellé dans différentes langues pour modifier le nom des attributs de la base de capture, cela rendait l'exécution de cette expérimentation très pertinente. D'autant plus que le standard Overlay Capture Architecture (OCA) offre beaucoup d'autres possibilités (format, encodage de caractère, valeurs de champ prédéfinies, etc.).
 
 ## 3.0 Environnement d\'expérimentation
 
