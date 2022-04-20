@@ -3,8 +3,8 @@ Voici les travaux réalisés dans le cadre d'une expérimentation visant à dém
 
 ## 1.0 Objectifs
 - Comprendre le standard _Overlay Capture Architecture (OCA)_;
-- Créer un paquet _Overlay Capture Architecture (OCA)_ incluant des superpositons de libellé français-anglais et une superposition de mise en page d'attestation;
-- Modifier le portefeuille [ARIES Mobile Agent React Native](https://github.com/hyperledger/aries-mobile-agent-react-native) pour qu'il affiche une attestation modifiée par les superpositions du paquet _Overlay Capture Architecture (OCA)_;
+
+- Modifier le portefeuille [ARIES Mobile Agent React Native](https://github.com/hyperledger/aries-mobile-agent-react-native) pour qu'il affiche une attestation en français-anglais ainsi qu'une image de marque (_branding_) en utilisant le standard _Overlay Capture Architecture (OCA)_;
 
 ## 2.0 Contexte
 _Overlay Capture Architecture (OCA)_ est une architecture de capture de données. Elle représente un schéma comme un objet multidimensionnel composé d'une base de capture stable et de superpositions liées qui viennent enrichir la base de capture.
