@@ -1,8 +1,8 @@
-# Intégrer le standard Overlay Capture Architecture (OCA) à l'écosystème ARIES
-Voici les travaux réalisés dans le cadre d'une expérimentation visant à intégrer le standard [Overlay Capture Architecture (OCA)](https://oca.colossi.network/) à l'écosystème [ARIES](https://www.hyperledger.org/use/aries) tel que proposé dans la requête pour commentaires [ARIES RFC 0013: Overlays](https://github.com/hyperledger/aries-rfcs/blob/main/concepts/0013-overlays/README.md).
+# Utiliser le standard _Overlay Capture Architecture (OCA)_ pour émettre des attestations multilingues
+Voici les travaux réalisés dans le cadre d'une expérimentation visant à démontrer la pertinence d'utiliser le standard [Overlay Capture Architecture (OCA)](https://oca.colossi.network/) pour émettre des attestations multilingues tel que proposé dans la requête pour commentaires [ARIES RFC 0013: Overlays](https://github.com/hyperledger/aries-rfcs/blob/main/concepts/0013-overlays/README.md).
 
 ### Qu'est-ce que le standard _Overlay Capture Architecture (OCA)_
-_Overlay Capture Architecture (OCA)_ est une architecture de capture de données par superposition. Elle représente un schéma comme un objet multidimensionnel composé d'une base de capture stable et de superpositions liées qui viennent enrichir la base de capture.
+_Overlay Capture Architecture (OCA)_ est une architecture de capture de données. Elle représente un schéma comme un objet multidimensionnel composé d'une base de capture stable et de superpositions liées qui viennent enrichir la base de capture.
 
 <p align="center">
   <img src="images/diagramme-oca.png" label="Overlay Capture Architecture (OCA)" />
