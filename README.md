@@ -147,6 +147,13 @@ Plusieurs considérations doivent être prises en compte :
 # 7.0 Analyse
 L'expérimentation a permis de montrer qu'il est possible d'utiliser le standard _Overlay Capture Architecture (OCA)_ pour émettre une attestation multilingues incluant une image de marque (_branding_) et de l'afficher dans le portefeuille "ARIES Mobile Agent React Native". De plus, standard _Overlay Capture Architecture (OCA)_ offre d'autres possibilités comme l'identification des informations sensibles, l'encodage des caractères, la description d'attributs, etc. qui n'ont pas été explorées. L'intégration dans le portefeuille a été relativement rapide étant donné que des implémentations sont déjà disponibles.
 
+<p align="center">
+  <img src="images/bifold-oca.png" label="Portefeuille" />
+
+  <br>
+  <b>Attestation dans le portefeuille</b>
+</p>
+
 ## 7.1 Paquet _Overlay Capture Architecture (OCA)_
 La création d'un paquet _Overlay Capture Architecture (OCA)_ est très simple en utilisant l'[éditeur de schéma OCA](https://github.com/THCLab/oca-editor). L'alignement des attributs de la base de capture avec ceux du schéma au format _anoncred_ peut représenter une source d'erreurs. L'outil devrait être modifié afin d'enrigistrer le schéma au format _anoncred_ et sa définition d'attestation (_credential definition_) automatiquement dans le registre de preuve (_Indy blockchain_) au moment de la publication du paquet.
 
