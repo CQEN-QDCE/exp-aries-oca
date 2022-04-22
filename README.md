@@ -67,11 +67,11 @@ Suivre les instructions d'installation de la version [CQEN-QDCE](https://github.
 
 ### 3.1 Conditions initiales et prémisses
 
-## 4.0 ???
+## 5.0 Contenu de l'attestation
 
 Pour cette expérimentation, il a été décidé de minimiser les modidifications à l'attestation pour lui associer un schéma OCA. Deux options semblaient possibles: 1-Ajouter une référence (SAI) vers le schéma OCA dans un attribut de l'attestation 2-Utiliser l'identifiant unique de la définition de l'attestation (Credential Definition) pour le récupérer. La deuxième option a été choisi. Elle a l'avantage de ne pas modifier l'attestation. Par contre, une référence (SAI) permettrait de créer un lien fort entre l'attestation et son schéma OCA. La référence pourrait également être le hash du schéma OCA. Il serait ainsi impossible de le modifier. 
 
-Le schéma de l'attestation utilisé pour l'expérimentation est:
+Voici le schéma, au format _anoncred_, de l'attestation utilisé pour l'expérimentation:
 ```json
 {
   "schema_name": "QCPERSON",
@@ -90,6 +90,146 @@ Le schéma de l'attestation utilisé pour l'expérimentation est:
 }
 ```
 Il est disponible sur le registre de preuve [CANdy-Dev-Network](https://candy-dev.cloudcompass.ca/). Son identifiant est Ep31SvFAetugFPe5CGzJxt:2:QCPERSON:1.0. La définition d'attestation utilisée est Ep31SvFAetugFPe5CGzJxt:3:CL:25458:QCPERSON2.
+
+Voici le schéma _Overlay Capture Architecture (OCA)_ utilisé pour l'expérimentation:
+```json
+{
+  "capture_base": {
+    "@context": "https://odca.tech/v1",
+    "name": "ANIG",
+    "type": "spec/schema_base/1.0",
+    "description": "Attestation Numérique d'Identité Gouvernemental",
+    "classification": "",
+    "issued_by": "",
+    "attributes": {
+      "first_name": "Text",
+      "last_name": "Text",
+      "birth_date": "Date",
+      "street_address": "Text",
+      "postal_code": "Text",
+      "province": "Text",
+      "country": "Text",
+      "issued": "Date"
+    },
+    "pii_attributes": [
+      "first_name",
+      "last_name",
+      "birth_date",
+      "street_address",
+      "postal_code",
+      "province",
+      "country"
+    ]
+  },
+  "overlays": [
+    {
+      "@context": "https://odca.tech/overlays/v1",
+      "type": "spec/overlay/label/1.0",
+      "issued_by": "",
+      "role": "",
+      "purpose": "",
+      "schema_base": "hl:beYwDtqVG34LzD9JSEf6oGXQESNMcvcRxjySu2rL7H9w",
+      "language": "fr_FR",
+      "attr_labels": {
+        "first_name": "Prénom",
+        "last_name": "Nom",
+        "birth_date": "Date Naissance",
+        "street_address": "Rue",
+        "postal_code": "Code Postale",
+        "province": "Province",
+        "country": "Pays",
+        "issued": "Émis"
+      },
+      "attr_categories": [
+        "_cat-1_"
+      ],
+      "cat_labels": {
+        "_cat-1_": ""
+      },
+      "cat_attributes": {
+        "_cat-1_": [
+          "first_name",
+          "last_name",
+          "birth_date",
+          "street_address",
+          "postal_code",
+          "province",
+          "country",
+          "issued"
+        ]
+      }
+    },
+    {
+      "@context": "https://odca.tech/overlays/v1",
+      "type": "spec/overlay/label/1.0",
+      "issued_by": "",
+      "role": "",
+      "purpose": "",
+      "schema_base": "hl:beYwDtqVG34LzD9JSEf6oGXQESNMcvcRxjySu2rL7H9w",
+      "language": "en_US",
+      "attr_labels": {
+        "first_name": "First Name",
+        "last_name": "Last Name",
+        "birth_date": "Date of Birth",
+        "street_address": "Street Address",
+        "postal_code": "Postal Code",
+        "province": "Province",
+        "country": "Country",
+        "issued": "Issued"
+      },
+      "attr_categories": [
+        "_cat-1_"
+      ],
+      "cat_labels": {
+        "_cat-1_": ""
+      },
+      "cat_attributes": {
+        "_cat-1_": [
+          "first_name",
+          "last_name",
+          "birth_date",
+          "street_address",
+          "postal_code",
+          "province",
+          "country",
+          "issued"
+        ]
+      }
+    },
+    {
+      "@context": "https://odca.tech/overlays/v1",
+      "type": "spec/overlay/format/1.0",
+      "issued_by": "",
+      "role": "",
+      "purpose": "",
+      "schema_base": "hl:beYwDtqVG34LzD9JSEf6oGXQESNMcvcRxjySu2rL7H9w",
+      "attr_formats": {
+        "birth_date": "YYYY-MM-DD",
+        "issued": "DD/MM/YYYY"
+      }
+    },
+    {
+      "@context": "https://odca.tech/overlays/v1",
+      "type": "spec/overlay/character_encoding/1.0",
+      "issued_by": "",
+      "role": "",
+      "purpose": "",
+      "schema_base": "hl:beYwDtqVG34LzD9JSEf6oGXQESNMcvcRxjySu2rL7H9w",
+      "default_character_encoding": "utf-8",
+      "attr_character_encoding": {
+        "first_name": "utf-8",
+        "last_name": "utf-8",
+        "birth_date": "utf-8",
+        "street_address": "utf-8",
+        "postal_code": "utf-8",
+        "province": "utf-8",
+        "country": "utf-8",
+        "issued": "utf-8"
+      }
+    }
+  ]
+}
+```
 
 Création de schéma OCA
 
