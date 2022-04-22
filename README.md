@@ -91,7 +91,7 @@ Voici le schéma, au format _anoncred_, de l'attestation utilisé pour l'expéri
 ```
 Il est disponible sur le registre de preuve [CANdy-Dev-Network](https://candy-dev.cloudcompass.ca/). Son identifiant est Ep31SvFAetugFPe5CGzJxt:2:QCPERSON:1.0. La définition d'attestation utilisée est Ep31SvFAetugFPe5CGzJxt:3:CL:25458:QCPERSON2.
 
-Voici le schéma _Overlay Capture Architecture (OCA)_ utilisé pour l'expérimentation:
+Voici le [schéma _Overlay Capture Architecture (OCA)_](https://repository.oca.argo.colossi.network/api/v4/schemas/E0ttcf4zZhRiTkazvq8X4T69q3hzug6t8zR8mAaMCe1U) utilisé pour l'expérimentation (forme abrégée):
 ```json
 {
   "capture_base": {
@@ -196,46 +196,17 @@ Voici le schéma _Overlay Capture Architecture (OCA)_ utilisé pour l'expérimen
         ]
       }
     },
-    {
-      "@context": "https://odca.tech/overlays/v1",
-      "type": "spec/overlay/format/1.0",
-      "issued_by": "",
-      "role": "",
-      "purpose": "",
-      "schema_base": "hl:beYwDtqVG34LzD9JSEf6oGXQESNMcvcRxjySu2rL7H9w",
-      "attr_formats": {
-        "birth_date": "YYYY-MM-DD",
-        "issued": "DD/MM/YYYY"
-      }
-    },
-    {
-      "@context": "https://odca.tech/overlays/v1",
-      "type": "spec/overlay/character_encoding/1.0",
-      "issued_by": "",
-      "role": "",
-      "purpose": "",
-      "schema_base": "hl:beYwDtqVG34LzD9JSEf6oGXQESNMcvcRxjySu2rL7H9w",
-      "default_character_encoding": "utf-8",
-      "attr_character_encoding": {
-        "first_name": "utf-8",
-        "last_name": "utf-8",
-        "birth_date": "utf-8",
-        "street_address": "utf-8",
-        "postal_code": "utf-8",
-        "province": "utf-8",
-        "country": "utf-8",
-        "issued": "utf-8"
-      }
-    }
+    ...
   ]
 }
 ```
+Il définit deux superpositions de libellé, une en français et une en anglais. Le nom des attributs de la base de capture sont les mêmes que ceux du schéma au format _anoncred_ afin d'appliquer les superpositions correctement lors de l'affichage dans le portefeuile.
 
 Création de schéma OCA
 
 Un [éditeur de schéma OCA](https://github.com/THCLab/oca-editor) est disponible sur le GitHub de [The Humain Colossus Lab](https://github.com/THCLab). En plus de permettre la création de schéma OCA et offre la possibilité de les publier dans un [dépôt commun](https://repository.oca.argo.colossi.network).
 
-Le schéma OCA [schéma OCA de l'expérimentation](https://repository.oca.argo.colossi.network/api/v4/schemas/E0ttcf4zZhRiTkazvq8X4T69q3hzug6t8zR8mAaMCe1U) inclut deux couches de libellés, une en français et une en anglais. Une couche de format est également incluse pour personaliser les attributs "birth_date" et "issued". Les noms d'attribut de la couche de base sont les mêmes que ceux de l'attestation afin d'appliquer les différentes personalisation correctement.
+
 
 
 
