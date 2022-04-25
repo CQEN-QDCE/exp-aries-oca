@@ -1,6 +1,29 @@
 # _Overlay Capture Architecture (OCA)_ pour émettre des attestations multilingues incluant une image de marque (_branding_)
 Voici les travaux réalisés dans le cadre d'une expérimentation visant à démontrer la pertinence d'utiliser le standard [Overlay Capture Architecture (OCA)](https://oca.colossi.network/) pour émettre des attestations multilingues incluant une image de marque (_branding_) tel que proposé dans la requête pour commentaires [ARIES RFC 0013: Overlays](https://github.com/hyperledger/aries-rfcs/blob/main/concepts/0013-overlays/README.md).
 
+## Table des matières
+
+1. [Objectifs](#10-objectifs)
+
+2. [Contexte](#20-contexte)
+
+3. [Motiviations](#30-motivations)
+
+4. [Environnement d\'expérimentation](#40-environnement-dexpérimentation)
+
+   1. [Conditions initiales et prémisses](#41-conditions-initiales-et-prémisses)
+
+5. [Le contenu de l'attestation](#50-le-contenu-de-lattestation)
+
+6. [Résultats attendus](#60-résultats-attendus)
+
+7. [Analyse](#70-analyse)
+
+8. [Conclusion](#80-conclusion)
+
+9. [Licence](#90-licence)
+---
+
 ## 1.0 Objectifs
 - Comprendre le standard _Overlay Capture Architecture (OCA)_;
 
@@ -46,7 +69,7 @@ Le base de capture et les superpositions sont liés ensemble par des identifiant
 ## 3.0 Motivations
 Le besoin initial qui a mené à cette expérimentation était de pouvoir émettre des attestations multilingues incluant une image de marque (_branding_). On peut penser à une attestation représentant un permis de conduire affichée dans le portefeuille sous forme de carte avec un logo du Québec et une image en arrière-plan. De plus, la traduction des attributs de l'attestation offre implicitement la possibilité de les afficher sous une forme plus lisible par un humain. Tel que décrit dans la requête pour commentaires [ARIES RFC 0043: I10n (Locali[s|z]ation)](https://github.com/hyperledger/aries-rfcs/blob/main/features/0043-l10n/README.md), le principal cas d'utilisation de DIDComm est la prise en charge du traitement automatisé, comme dans le cas des messages qui conduisent à la délivrance d'une attestation, à l'échange d'une preuve, etc. Le traitement automatisé peut être le seul moyen pour certains agents de traiter les messages, s'il s'agit de dispositifs ou de logiciels gérés par des organisations sans intervention humaine. Cependant, de nombreuses interactions requiert une intervention humaine. Par exemple, l'envoit d'une preuve à partir d'un portefeuille mobile. C'est pourquoi, losque des humains sont impliqués, la localisation et la traduction potentielle dans diverses langues naturelles deviennent importantes. Au moment d'écrire ces lignes, le statut de la requête pour commentaires [ARIES RFC 0043: I10n (Locali[s|z]ation)](https://github.com/hyperledger/aries-rfcs/blob/main/features/0043-l10n/README.md) est "Démontrée" mais elle n'a pas encore été implémentée. Comme le standard [_Overlay Capture Architecture (OCA_)](https://oca.colossi.network/) offre, entre autres, la possibilité de créer des superpositions de libellé dans différentes langues pour modifier le nom des attributs de la base de capture, cela rendait l'exécution de cette expérimentation très pertinente. D'autant plus que le standard Overlay Capture Architecture (OCA) offre beaucoup d'autres possibilités (format, encodage de caractère, valeurs de champ prédéfinies, etc.).
 
-## 3.0 Environnement d\'expérimentation
+## 4.0 Environnement d\'expérimentation
 
 ### Construit avec
 * [ReactNative](https://reactnative.dev/)
@@ -65,13 +88,14 @@ Le besoin initial qui a mené à cette expérimentation était de pouvoir émett
 Suivre les instructions d'installation de la version [CQEN-QDCE](https://github.com/CQEN-QDCE) du portefeuille "ARIES Mobile Agent React Native". Utiliser la branche "[poc-oca](https://github.com/CQEN-QDCE/aries-mobile-agent-react-native/tree/poc-oca)" pour récupérer le code de l'expérimentation.
 
 
-### 3.1 Conditions initiales et prémisses
+### 4.1 Conditions initiales et prémisses
+
+Pour cette expérimentation, il a été décidé de ne pas modifier le schéma au format _anoncred_ pour lui associer un paquet _Overlay Capture Architecture (OCA)_. Il serait possible (peut-être préférable) d'ajouter le _SAI_ dans un attribut du schéma au format _anoncred_. C'est plutôt l'identifiant unique de la définition de l'attestation (_credential definition_) qui a été utilisé pour le récupérer. Par contre, une référence (SAI) permettrait de créer un lien fort entre l'attestation et son paquet _Overlay Capture Architecture (OCA)_.
 
 ## 5.0 Contenu de l'attestation
+L'attestation utilisé pour cette expérimentation est une identité numérique citoyenne. Les attributs ont été nommé en anglais et inclut des caractères spéciaux. Deux superpositions de libellé ont été créés pour les traduire en français et en anglais.
 
-Pour cette expérimentation, il a été décidé de minimiser les modidifications à l'attestation pour lui associer un schéma OCA. Deux options semblaient possibles: 1-Ajouter une référence (SAI) vers le schéma OCA dans un attribut de l'attestation 2-Utiliser l'identifiant unique de la définition de l'attestation (Credential Definition) pour le récupérer. La deuxième option a été choisi. Elle a l'avantage de ne pas modifier l'attestation. Par contre, une référence (SAI) permettrait de créer un lien fort entre l'attestation et son schéma OCA. La référence pourrait également être le hash du schéma OCA. Il serait ainsi impossible de le modifier. 
-
-Voici le schéma, au format _anoncred_, de l'attestation utilisé pour l'expérimentation:
+### 5.1 Schéma de l'attestation au format _anoncred_:
 ```json
 {
   "schema_name": "QCPERSON",
@@ -200,15 +224,11 @@ Voici le [schéma _Overlay Capture Architecture (OCA)_](https://repository.oca.a
   ]
 }
 ```
-Il définit deux superpositions de libellé, une en français et une en anglais. Le nom des attributs de la base de capture sont les mêmes que ceux du schéma au format _anoncred_ afin d'appliquer les superpositions correctement lors de l'affichage dans le portefeuile.
+Il inclut deux superpositions de libellé, une en français et une en anglais. Le nom des attributs de la base de capture sont les mêmes que ceux du schéma au format _anoncred_ afin d'appliquer les superpositions correctement lors de l'affichage dans le portefeuile.
 
 Création de schéma OCA
 
 Un [éditeur de schéma OCA](https://github.com/THCLab/oca-editor) est disponible sur le GitHub de [The Humain Colossus Lab](https://github.com/THCLab). En plus de permettre la création de schéma OCA et offre la possibilité de les publier dans un [dépôt commun](https://repository.oca.argo.colossi.network).
-
-
-
-
 
 Exemple de mise en page d'attestation:
 P.S.: L'exemple ci-bas n'est pas fonctionnel. Il a été abrégé pour montrer uniquement les différentes instructions permettant la msie en page.
@@ -276,3 +296,8 @@ Le rendu de l'image de marque de l'attestation a été implémenté avec la comp
 
 # 8.0 Conclusion
 L'expérimentation a permis d'explorer la pertinence d'utiliser le standard _Overlay Capture Architecture (OCA)_ pour émettre des attestations multilingues incluant une image de marque (_branding_). Le résultat final s'est avéré concluant. Elle a également permis de découvrir que l,intégration du standard offre beaucoup plus (identification des inforamtions personnelles (PII), méta-information, encodage des caractères, valeurs de champ prédéfinies, format d'affichage, etc.). Un outil de création de formulaire de saisie OCA pour la capture de données est également disponible. Il a le potentiel d'être intégré à un coffre à outils plus générique offert aux émetteurs d'attestation. Ce dernier permettrait, par exemple, de créer visuellement une attestation (nom, version et attributs par glisser-déposer), de publier son schéma au format _anoncred_ dans le registre de preuves et son paquet _Overlay Capture Architecture (OCA)_ associé dans un dépôt commun. Et finalement cette attestation pourrait être offerte...
+
+[^1]:
+    
+## 9.0 Licence
+Distribué sous Licence Libre du Québec – Réciprocité (LiLiQ-R). Voir [LICENCE](LICENSE) pour plus d'informations.
