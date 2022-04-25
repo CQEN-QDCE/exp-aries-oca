@@ -13,7 +13,7 @@ Voici les travaux réalisés dans le cadre d'une expérimentation visant à dém
 
    1. [Conditions initiales et prémisses](#41-conditions-initiales-et-prémisses)
 
-5. [Le contenu de l'attestation](#50-le-contenu-de-lattestation)
+5. [Contenu de l'attestation](#50-contenu-de-lattestation)
 
 6. [Résultats attendus](#60-résultats-attendus)
 
