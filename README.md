@@ -1,3 +1,6 @@
+[![img](https://img.shields.io/badge/Cycle%20de%20Vie-Phase%20d%C3%A9couverte-339999)](https://www.quebec.ca/gouv/politiques-orientations/vitrine-numeriqc/accompagnement-des-organismes-publics/demarche-conception-services-numeriques)
+[![License](https://img.shields.io/badge/Licence-LiLiQ--R-blue)](LICENSE)
+
 # _Overlay Capture Architecture (OCA)_ pour émettre des attestations multilingues incluant une image de marque (_branding_)
 
 Voici les travaux réalisés dans le cadre d'une expérimentation visant à démontrer la pertinence d'utiliser le standard [Overlay Capture Architecture (OCA)](https://oca.colossi.network/) pour émettre des attestations multilingues incluant une image de marque (_branding_) tel que proposé dans la requête pour commentaires [ARIES RFC 0013: Overlays](https://github.com/hyperledger/aries-rfcs/blob/main/concepts/0013-overlays/README.md).
