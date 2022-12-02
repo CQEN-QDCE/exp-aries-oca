@@ -338,4 +338,4 @@ L'expérimentation a permis d'explorer la pertinence d'utiliser le standard _Ove
 
 ## 9.0 Licence
 
-Distribué sous Licence Libre du Québec – Réciprocité (LiLiQ-R). Voir [LICENCE](LICENSE) pour plus d'informations.
+Distribué sous Licence Libre du Québec – Réciprocité (LiLiQ-R). Voir [LICENCE](https://forge.gouv.qc.ca/licence/liliq-p/) pour plus d'informations.
